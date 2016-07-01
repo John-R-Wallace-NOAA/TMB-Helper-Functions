@@ -1,7 +1,7 @@
 ﻿# TMB-Helper-Functions
 
 # pickTMBdll()
-Use pickTMBdll() to find and select the needed loaded TMB DLL's:
+Use pickTMBdll() to find and select the loaded TMB DLL's to use or delete:
 
     > pickTMBDLL(1)
 
@@ -20,13 +20,13 @@ Use pickTMBdll() to find and select the needed loaded TMB DLL's:
 
     DLL selected: W:/MRO/R-3.2.5/library/glmmTMB/libs/x64/glmmTMB.dll 
     
-    obj <- TMB::MakeADFun(data, parameters, DLL = pickTMBdll(2))
+    obj <- TMB::MakeADFun(data, parameters, DLL = pickTMBdll(2)) # Use linreg_Gamma_errors_parallel
     
-    dyn.unload( pickTMBDLL(1) )
+    dyn.unload( pickTMBDLL(1) ) # Remove glmmTMB
     # ...
     
     
-    pickTMBDLL(1)
+    pickTMBDLL(1) # glmmTMB gone
 
     All TMB DLL's:
 
