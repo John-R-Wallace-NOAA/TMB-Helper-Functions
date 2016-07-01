@@ -22,4 +22,18 @@ Use pickTMBdll() to find and select the needed loaded TMB DLL's:
     
     obj <- TMB::MakeADFun(data, parameters, DLL = pickTMBdll(2))
     
+    dyn.unload( pickTMBDLL(1) )
+    # ...
     
+    
+    pickTMBDLL(1)
+
+    All TMB DLL's:
+
+    $linreg_Gamma_errors_parallel
+    DLL name: linreg_Gamma_errors_parallel
+    Filename: W:/ALL_USR/JRW/R.Not so Clean.64/linreg_Gamma_errors_parallel.dll
+    Dynamic lookup: TRUE
+
+
+    DLL selected: W:/ALL_USR/JRW/R.Not so Clean.64/linreg_Gamma_errors_parallel.dll 
