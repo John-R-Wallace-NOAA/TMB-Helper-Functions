@@ -3,7 +3,7 @@
 # pickTMBdll()
 Use pickTMBdll() to find and select the needed loaded TMB DLL's:
 
-    > pickTMBDLL()
+    > pickTMBDLL(1)
 
     All TMB DLL's:
 
@@ -19,3 +19,7 @@ Use pickTMBdll() to find and select the needed loaded TMB DLL's:
 
 
     DLL selected: W:/MRO/R-3.2.5/library/glmmTMB/libs/x64/glmmTMB.dll 
+    
+    obj <- TMB::MakeADFun(data, parameters, DLL = pickTMBdll(2))
+    
+    
