@@ -1,6 +1,6 @@
 ﻿# TMB-Helper-Functions
 
-# pickTMBdll()
+## pickTMBdll()
 Use pickTMBdll() to find and select the loaded TMB DLL's to use or delete:
 
     > pickTMBDLL(1)
