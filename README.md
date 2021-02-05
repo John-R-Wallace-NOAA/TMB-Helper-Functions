@@ -1,5 +1,32 @@
 ﻿# TMB-Helper-Functions
 
+## runExampleWin()
+
+
+
+    runExampleWin('simple', clean = TRUE)
+    
+    runExampleWin('simple', clean = TRUE, xF = '-Wno-aggressive-loop-optimizations')
+    
+    getLoadedDLLs()[['simple']]
+    
+    runExampleWin('simple', cleanBefore = TRUE, xF = '-Wno-aggressive-loop-optimizations')
+    
+    getLoadedDLLs()[['simple']]
+    
+
+    dir.create("c:/temp_TMB", showWarnings = FALSE)
+    exTMB <- system.file("examples", package = "TMB")
+    file.copy(paste0(exTMB, "/",  dir(exTMB, pattern = "ar1xar1.[cpp|R]")), "c:/temp_TMB")
+    
+    runExampleWin('ar1xar1', clean = TRUE, exfolder = "c:/temp_TMB")
+
+
+
+
+
+
+
 ## pickTMBdll()
 Use pickTMBdll() to find and select the loaded TMB DLL's to use or delete:
 
