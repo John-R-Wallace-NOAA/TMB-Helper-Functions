@@ -7,9 +7,8 @@ runExampleWin <- function(name = NULL, xF = "", clean = FALSE, cleanBefore = cle
     cwd <- setwd(exfolder)
     on.exit(setwd(cwd))
     
-    arch <- Sys.getenv("R_ARCH")
-    if (arch != "" && subarch) {
-        arch <- substring(arch, 2)
+    arch <- .Platform$r_arch
+    if (nzchar(arch) && subarch) {
         if (!file.exists(arch)) {
             dir.create(arch)
             file.copy(dir(pattern = "*.[cpp|R]"), arch)
