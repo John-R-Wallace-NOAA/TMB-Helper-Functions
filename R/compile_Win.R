@@ -2,8 +2,9 @@
 compile_Win <- function(file, cppDir = getwd(), xF = "", ...) {
 
     # Create a local 'Makevars' file without the all warnings, '-Wall', flag. Add extra flags with the 'xF' argument.
-	cwd <- setwd(cppDir)
+    cwd <- setwd(cppDir)
     on.exit(setwd(cwd))
+	
     V <- sub(paste0('.', tools::file_ext(file)), "", file)
     Ri <- paste0(R.home(), '/include')
     Ti <- system.file("include", package = "TMB")
