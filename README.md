@@ -29,7 +29,7 @@
     
     # Use of character vector with individual elements (not one long string) is needed in 'del_Makeconf_flags' and can also be used in 'flags' argument for consistence.                   
     # Here the "-Wignored-attributes" is used to again see the excess warnings.
-    # Break out of the excess warnings quickly (Esc in Windows) to see the details from verbose = TRUE.
+    # When running the example, break out of the excess warnings quickly (Esc in Windows) to see the details from verbose = TRUE.
     if(file.exists('linreg_parallel.dll')) file.remove('linreg_parallel.dll'); if(file.exists('linreg_parallel.o')) file.remove('linreg_parallel.o')  
     Compile('linreg_parallel.cpp', flags = c("-Wignored-attributes", "-O1"), del_Makeconf_flags = c("-Wall", "-O2"), verbose = TRUE) 
 
