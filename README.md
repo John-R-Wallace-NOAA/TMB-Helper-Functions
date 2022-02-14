@@ -1,5 +1,47 @@
 ﻿# TMB-Helper-Functions
 
+## Compile() - a wrapper for compile()
+
+
+    library(TMB) 
+    # source() in R/Compile.R from this repo
+        
+    # TMB compile() gives excess warnings when TMB/include/Eigen doesn't exist as is the case when TMB is downloaded from CRAN.
+    if(file.exists('linreg_parallel.dll') | file.exists('linreg_parallel.o')) file.remove(c('linreg_parallel.dll', 'linreg_parallel.o'), showWarnings = FALSE)
+    TMB::compile('linreg_parallel.cpp')
+    
+    # New Compile wrapper removes the excess warnings
+    if(file.exists('linreg_parallel.dll') | file.exists('linreg_parallel.o')) file.remove(c('linreg_parallel.dll', 'linreg_parallel.o'), showWarnings = FALSE)
+    Compile('linreg_parallel.cpp')
+    
+    # Using verbose = TRUE shows the details of what is happening
+    if(file.exists('linreg_parallel.dll') | file.exists('linreg_parallel.o')) file.remove(c('linreg_parallel.dll', 'linreg_parallel.o'), showWarnings = FALSE)
+    Compile('linreg_parallel.cpp', verbose = TRUE)
+             
+    # Here the debug level is changed from O2 to O1 with the help of the new argument 'del_args_Makeconf'
+    if(file.exists('linreg_parallel.dll') | file.exists('linreg_parallel.o')) file.remove(c('linreg_parallel.dll', 'linreg_parallel.o'), showWarnings = FALSE)
+    Compile('linreg_parallel.cpp', flags = "-O1", del_args_Makeconf = "-O2", verbose = TRUE) 
+        
+    # This call is less parsimonious than above, but the debug level is still changed from O2 to O1 since the right most "-O1" flag will override '-O2' that remains from CXXFLAGS.
+    if(file.exists('linreg_parallel.dll') | file.exists('linreg_parallel.o')) file.remove(c('linreg_parallel.dll', 'linreg_parallel.o'), showWarnings = FALSE)
+    Compile('linreg_parallel.cpp', flags = '-O1', verbose = TRUE)
+    
+    # Use of character vector elements (not one long string) is needed in 'del_args_Makeconf' and can be used in 'flags' argument for consistence.                
+    # Here the "-Wignored-attributes" is used to again see the excess warnings.
+    # Break out of the excess warnings quickly (Esc in Windows) to see the details from verbose = TRUE.
+    if(file.exists('linreg_parallel.dll') | file.exists('linreg_parallel.o')) file.remove(c('linreg_parallel.dll', 'linreg_parallel.o'), showWarnings = FALSE)
+    Compile('linreg_parallel.cpp', flags = c("-Wignored-attributes", "-O1"), del_args_Makeconf = c("-Wall", "-O2"), verbose = TRUE) 
+
+
+
+
+
+
+---
+---
+
+# Old functions below - may be deleted in the future
+
 ## runExampleWin()
 
 
