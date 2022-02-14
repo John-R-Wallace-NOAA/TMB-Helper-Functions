@@ -11,7 +11,7 @@
     if(file.exists('linreg_parallel.dll')) file.remove('linreg_parallel.dll'); if(file.exists('linreg_parallel.o')) file.remove('linreg_parallel.o')  
     TMB::compile('linreg_parallel.cpp')
     
-    # New Compile wrapper removes the excess warnings
+    # New Compile() wrapper removes the excess warnings
     if(file.exists('linreg_parallel.dll')) file.remove('linreg_parallel.dll'); if(file.exists('linreg_parallel.o')) file.remove('linreg_parallel.o')  
     Compile('linreg_parallel.cpp')
     
