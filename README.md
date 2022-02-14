@@ -6,12 +6,12 @@
     library(TMB) 
     # source() in R/Compile.R from this repo
         
-    # TMB's compile() gives excess warnings when TMB/include/Eigen doesn't exist as is the case when TMB is downloaded from CRAN.
+     # TMB's compile() gives excess warnings when TMB/include/Eigen doesn't exist as is the case when TMB is downloaded from CRAN.
     # Note: file.remove() can take multiple file names, but there is no way to suppress the warning of a missing file not deleted [only file.create() has a argument to suppress warnings].
     if(file.exists('linreg_parallel.dll')) file.remove('linreg_parallel.dll'); if(file.exists('linreg_parallel.o')) file.remove('linreg_parallel.o')  
     TMB::compile('linreg_parallel.cpp')
     
-    # New Compile() wrapper removes the excess warnings
+    # New Compile wrapper removes the excess warnings
     if(file.exists('linreg_parallel.dll')) file.remove('linreg_parallel.dll'); if(file.exists('linreg_parallel.o')) file.remove('linreg_parallel.o')  
     Compile('linreg_parallel.cpp')
     
@@ -19,23 +19,19 @@
     if(file.exists('linreg_parallel.dll')) file.remove('linreg_parallel.dll'); if(file.exists('linreg_parallel.o')) file.remove('linreg_parallel.o')  
     Compile('linreg_parallel.cpp', verbose = TRUE)
              
-    # Here the debug level is changed from O2 to O1 with the help of the new argument 'del_args_Makeconf'
+    # Here the debug level is changed from O2 to O1 with the help of the 'del_Makeconf_flags' argument that deletes flag(s) from Makeconf CXXFLAGS
     if(file.exists('linreg_parallel.dll')) file.remove('linreg_parallel.dll'); if(file.exists('linreg_parallel.o')) file.remove('linreg_parallel.o')  
-    Compile('linreg_parallel.cpp', flags = "-O1", del_args_Makeconf = "-O2", verbose = TRUE) 
+    Compile('linreg_parallel.cpp', flags = "-O1", del_Makeconf_flags = "-O2", verbose = TRUE) 
         
     # This call is less parsimonious than above, but the debug level is still changed from O2 to O1 since the right most "-O1" flag will override '-O2' that remains from CXXFLAGS.
     if(file.exists('linreg_parallel.dll')) file.remove('linreg_parallel.dll'); if(file.exists('linreg_parallel.o')) file.remove('linreg_parallel.o')  
     Compile('linreg_parallel.cpp', flags = '-O1', verbose = TRUE)
     
-    # Use of character vector elements (not one long string) is needed in 'del_args_Makeconf' and can be used in 'flags' argument for consistence.                
+    # Use of character vector with individual elements (not one long string) is needed in 'del_Makeconf_flags' and can also be used in 'flags' argument for consistence.                   
     # Here the "-Wignored-attributes" is used to again see the excess warnings.
     # Break out of the excess warnings quickly (Esc in Windows) to see the details from verbose = TRUE.
     if(file.exists('linreg_parallel.dll')) file.remove('linreg_parallel.dll'); if(file.exists('linreg_parallel.o')) file.remove('linreg_parallel.o')  
-    Compile('linreg_parallel.cpp', flags = c("-Wignored-attributes", "-O1"), del_args_Makeconf = c("-Wall", "-O2"), verbose = TRUE) 
-
-
-
-
+    Compile('linreg_parallel.cpp', flags = c("-Wignored-attributes", "-O1"), del_Makeconf_flags = c("-Wall", "-O2"), verbose = TRUE) 
 
 
 ---
